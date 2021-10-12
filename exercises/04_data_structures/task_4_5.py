@@ -22,3 +22,22 @@
 
 command1 = "switchport trunk allowed vlan 1,2,3,5,8"
 command2 = "switchport trunk allowed vlan 1,3,8,9"
+
+#создаем список Х по пробелам
+#из последнего элемент списка Х создаем новый список по ','
+command1 = command1.split()[-1].split(',')
+command2 = command2.split()[-1].split(',')
+
+#создаем множества, чтобы оставить уникальные значения
+res1 = set(command1)
+res2 = set(command2)
+
+#создаем пересечение множеств
+result = (res1 & res2)
+print(result)
+
+
+'''
+Пересечение множеств можно получить с помощью метода intersection()
+ или оператора &:
+'''

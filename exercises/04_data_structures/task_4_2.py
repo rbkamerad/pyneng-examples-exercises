@@ -15,3 +15,16 @@
 """
 
 mac = "AAAA:BBBB:CCCC"
+
+result = mac.replace(':', '.')
+print(result)
+
+'''
+Замена последовательности символов в строке 
+на другую последовательность (метод replace()):
+    
+    In [45]: string1 = 'FastEthernet0/1'
+
+    In [46]: string1.replace('Fast', 'Gigabit')
+    Out[46]: 'GigabitEthernet0/1'
+'''

@@ -16,3 +16,11 @@
 """
 
 nat = "ip nat inside source list ACL interface FastEthernet0/1 overload"
+
+result = nat.replace('Fast', 'Gigabit')
+print(result)
+
+'''
+Замена последовательности символов в строке 
+на другую последовательность (метод replace()):
+'''

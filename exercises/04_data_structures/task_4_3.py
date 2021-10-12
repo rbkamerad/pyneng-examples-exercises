@@ -22,3 +22,19 @@
 """
 
 config = "switchport trunk allowed vlan 1,3,10,20,30,100"
+
+result = config.split()[-1]
+print(result)
+
+'''
+Метод split() разбивает строку на части, используя как разделитель 
+какой-то символ (или символы) и возвращает список строк
+
+In [53]: string1 = 'switchport trunk allowed vlan 10,20,30,100-200'
+
+In [54]: commands = string1.split()
+
+In [55]: print(commands)
+['switchport', 'trunk', 'allowed', 'vlan', '10,20,30,100-200']
+
+'''
