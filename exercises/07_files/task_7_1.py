@@ -14,3 +14,18 @@ Outbound Interface    FastEthernet0/0
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+result = {}
+
+#префикс 'r' для корректного чтения пути в windows
+with open(r'C:\Users\IKrasnoborodko\Documents\_atwork\less\pyneng-examples-exercises-master\exercises\07_files\ospf.txt','r',encoding='utf-8') as f:
+    for line in f:
+        print('\n')
+        line_list = line.split()
+        result['Prefix'] = line_list[1]
+        result['AD/Metric'] = line_list[2][1:-1]
+        result['Next-Hop'] = line_list[4][:-1]
+        result['Last update'] = line_list[5][:-1]
+        result['Outbound Interface'] = line_list[6]
+        for value, key in result.items():
+            print('{:22}{:15}'.format(value, key))
+print('\n')   
