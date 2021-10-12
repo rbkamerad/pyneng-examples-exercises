@@ -43,3 +43,13 @@ london_co = {
         "routing": True,
     },
 }
+
+
+name = input('input hostname r1/r2/sw1: ') #выбираем первый ключ (устройство)
+name_keys = ', '.join(list(london_co[name].keys())) #получаем строку(список(ключи)
+param_reqest = ''.join(['input parameter (', name_keys, '): ']) #получаем строку со списком ключей в значении для ключа name
+param = input(param_reqest).lower() #получаем ключ в списке name_keys
+                                    #.lower() = поиск без учета регистра, т.к. ключи записаны строчными буквами
+hostname = london_co[name]
+
+print(hostname.get(param, 'Такого параметра нет')) # *

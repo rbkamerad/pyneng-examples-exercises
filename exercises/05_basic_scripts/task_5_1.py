@@ -46,3 +46,8 @@ london_co = {
         "routing": True,
     },
 }
+
+name = input('input hostname r1/r2/sw1: ')
+print(london_co[name])
+
+#print(london_co[input('input hostname r1/r2/sw1: ')])

@@ -49,3 +49,41 @@ bin_ip = "00001010000000010000000111000011"
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+
+
+input_net = input('input subnet (ex:10.1.1.0/24): ').split('/')
+
+mask = int(input_net[1])
+mask_bit_str = '1' * mask + '0' * (32 - mask)
+mask_bit_list = ([int(mask_bit_str[0:8], 2),
+                  int(mask_bit_str[8:16], 2),
+                  int(mask_bit_str[16:24], 2),
+                  int(mask_bit_str[24:], 2)])
+result_mask = '''
+Mask:
+/{0:}
+{1:<10}{2:<10}{3:<10}{4:<10}
+{1:08b}  {2:08b}  {3:08b}  {4:08b}
+'''
+
+ip = input_net[0].split('.')
+ip[0] = int(ip[0])
+ip[1] = int(ip[1])
+ip[2] = int(ip[2])
+ip[3] = int(ip[3])
+ip_bit_str=f'{ip[0]:08b}{ip[1]:08b}{ip[2]:08b}{ip[3]:08b}'
+net_bit_str = ip_bit_str[0:mask] + '0' * (32 - mask)
+result_net = '''
+Network:
+{0:<10}{1:<10}{2:<10}{3:<10}
+{0:08b}  {1:08b}  {2:08b}  {3:08b}
+'''
+print(result_net.format(int(net_bit_str[0:8], 2),
+                        int(net_bit_str[8:16], 2),
+                        int(net_bit_str[16:24], 2),
+                        int(net_bit_str[24:], 2)) +
+      result_mask.format(mask,
+                         mask_bit_list[0], 
+                         mask_bit_list[1], 
+                         mask_bit_list[2], 
+                         mask_bit_list[3]))

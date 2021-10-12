@@ -49,3 +49,25 @@ london_co = {
         "routing": True,
     },
 }
+
+
+name = input('input hostname r1/r2/sw1: ') #выбираем первый ключ (устройство)
+name_keys = ', '.join(list(london_co[name].keys())) #получаем строку(список(ключи)
+param_reqest = ''.join(['input parameter (', name_keys, '): ']) #получаем строку со списком ключей в значении для ключа name
+param = input(param_reqest) #получаем ключ в списке name_keys
+hostname = london_co[name]
+
+print(hostname.get(param, 'Такого параметра нет')) # *
+
+
+'''
+*
+Метод get запрашивает ключ, и если его нет, вместо ошибки возвращает None.
+In [18]: london = {'name': 'London1', 'location': 'London Str', 'vendor': 'Cisco'}
+In [19]: print(london.get('ios'))
+None
+
+Метод get() позволяет также указывать другое значение вместо None:
+In [20]: print(london.get('ios', 'Ooops'))
+Ooops
+'''

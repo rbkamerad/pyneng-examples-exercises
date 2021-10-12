@@ -50,3 +50,34 @@ london_co = {
         "routing": True,
     },
 }
+
+name = input('input hostname r1/r2/sw1: ') #выбираем первый ключ (устройство)
+name_keys = ', '.join(list(london_co[name].keys())) #получаем строку(список(ключи) *
+param_reqest = ''.join(['input parameter (', name_keys, '): ']) #получаем строку со списком ключей в значении для ключа name
+param = input(param_reqest) #получаем ключ в списке name_keys 
+
+print(london_co[name][param]) # **
+
+'''
+*список ключей выдается аргументе dict_keys, списком
+In [28]: london = {'name': 'London1', 'location': 'London Str', 'vendor': 'Cisco'}
+In [29]: keys = london.keys()
+In [30]: print(keys)
+dict_keys(['name', 'location', 'vendor'])
+    
+    для получаения только списка, нужно явно указать это в запросе
+    In [33]: list_keys = list(london.keys())
+    In [34]: list_keys
+    Out[34]: ['name', 'location', 'vendor', 'ip']
+    
+        чтобы из списка сделать строку, используем ''.join()
+        Метод join собирает список строк в одну строку с разделителем, который указан перед join:
+        In [16]: vlans = ['10', '20', '30']
+        In [17]: ','.join(vlans)
+        Out[17]: '10,20,30'
+
+**
+Получить значения из вложенного словаря можно так:
+In [7]: london_co['r1']['ios']
+Out[7]: '15.4'
+'''

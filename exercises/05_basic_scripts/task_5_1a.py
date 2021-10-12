@@ -44,3 +44,16 @@ london_co = {
         "routing": True,
     },
 }
+
+
+name = input('input hostname r1/r2/sw1: ')
+param = input('input parameter location/vendor/model/ios/ip: ')
+print(london_co[name][param])
+
+'''
+Получить значения из вложенного словаря можно так:
+
+In [7]: london_co['r1']['ios']
+Out[7]: '15.4'
+
+'''
