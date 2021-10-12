@@ -81,3 +81,19 @@ trunk = {
 #             print(f" {command} {vlan}")
 #         else:
 #             print(f" {command}")
+
+for intf, vlan in access.items():
+    print("interface FastEthernet" + intf)
+    for command in access_template:
+        if command.endswith("access vlan"):
+            print(f" {command} {vlan}")
+        else:
+            print(f" {command}")
+
+for intf, command_list in trunk.items():
+    print("interface FastEthernet" + intf)
+    for command in trunk_template:
+        if command.endswith("allowed vlan"):
+            print(f" {command} {command_list[0]} {','.join(command_list[1:])}")
+        else:
+             print(f" {command}")
