@@ -40,3 +40,19 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+result = []
+
+with open('CAM_table.txt') as f:
+    for line in f:
+        line_ = line.split()
+        if line_ and line_[-1].startswith('Gi'):
+            vlan = int(line_[0])
+            mac = line_[1]
+            intf = line_[-1]
+            result.append([vlan, mac, intf])
+        else:
+            continue
+    
+    result.sort()
+    for list_ in result:
+        print('{:<10}{:<20}{:<5}'.format(list_[0], list_[1], list_[2]))

@@ -20,3 +20,14 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+
+with open('CAM_table.txt') as f:
+    for line in f:
+        line_ = line.split()
+        if line_ and line_[-1].startswith('Gi'):
+            vlan = line_[0]
+            mac = line_[1]
+            intf = line_[-1]
+            print('{:10}{:20}{:5}'.format(vlan, mac, intf))
+        else:
+            continue
