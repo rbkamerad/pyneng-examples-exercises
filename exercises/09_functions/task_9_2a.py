@@ -58,16 +58,20 @@ def generate_trunk_config(intf_vlan_mapping, trunk_template):
 
     Возвращает список всех портов в режиме trunk с конфигурацией на основе шаблона
     """
-    result = {}
     
+    result = {}
+
+    result.fromkeys(intf for intf in intf_vlan_mapping.keys())
     for intf, temp_vl in intf_vlan_mapping.items():
-      vlans = ','.join(str(i) for i in temp_vl)
-      result.append(f'interface {intf}') 
-      for item in trunk_template:
-        if item.endswith('allowed vlan'):
-          result.append(f'{item} {vlans}')
-        else:
-          result.append(item)
+        vlans = ','.join(str(i) for i in temp_vl)
+        result[intf] = []
+
+        for item in trunk_template:
+            if item.endswith('allowed vlan'):
+                result[intf].append(f'{item} {vlans}')
+            else:
+                result[intf].append(item)
+
     return result
 
-print(generate_trunk_config(trunk_config_2, trunk_mode_template))
+print(generate_trunk_config(trunk_config, trunk_mode_template))
