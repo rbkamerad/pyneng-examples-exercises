@@ -84,13 +84,13 @@ def convert_config_to_dict(config_filename):
                 continue
             
             elif line.startswith(' ') == False:
-                key = line
-                result = {key.strip(), []}
+                key = line.strip()
+                result.append({key: []})
             
             else:
-                result[key].append(line.strip())
-                
-                    
+                result[-1][key] = (line.strip())
+
+    result.pop(0)
     return(result)
 
 print(convert_config_to_dict('config_sw1.txt'))
