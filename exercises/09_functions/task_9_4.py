@@ -64,3 +64,34 @@ def ignore_command(command, ignore):
         if word in command:
             ignore_status = True
     return ignore_status
+
+def convert_config_to_dict(config_filename):
+    '''
+    обрабатывает конфигурационный файл коммутатора и возвращает словарь:
+    * Все команды верхнего уровня (глобального режима конфигурации), будут ключами.
+    * Если у команды верхнего уровня есть подкоманды, они должны быть в значении
+    у соответствующего ключа, в виде списка (пробелы в начале строки надо удалить).
+    * Если у команды верхнего уровня нет подкоманд, то значение будет пустым списком
+
+    ожидает как аргумент имя конфигурационного файла
+    игнорирует строки, которые начинаются с '!', а также строки в которых содержатся слова из списка ignore.
+    ignore = ["duplex", "alias", "configuration"]
+    '''
+    result = []
+    with open(config_filename) as file_:
+        for line in file_:
+            if '!' in line or ignore_command(line, ignore):
+                continue
+            
+            elif line.startswith(' ') == False:
+                key = line
+                result = {key.strip(), []}
+            
+            else:
+                result[key].append(line.strip())
+                
+                    
+    return(result)
+
+print(convert_config_to_dict('config_sw1.txt'))
+
