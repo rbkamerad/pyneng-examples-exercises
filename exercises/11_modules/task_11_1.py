@@ -35,6 +35,9 @@ R6           Fa 0/2          143           R S I           2811       Fa 0/0
 """
 
 
+from urllib import request
+
+
 def parse_cdp_neighbors(command_output):
     """
     Тут мы передаем вывод команды одной строкой потому что именно в таком виде будет
@@ -43,6 +46,23 @@ def parse_cdp_neighbors(command_output):
     и с файлами и с выводом с оборудования.
     Плюс учимся работать с таким выводом.
     """
+    result = {}
+    table_start = False
+
+    output_per_line_list =  command_output.split()
+    request_line = output_per_line_list[0]
+    local_device_name = request_line.split('>')[0]
+    for line in output_per_line_list:
+        words_list = line.split()
+        if not table_start:
+            continue
+        
+        while words_list[-1] != 'ID':
+            continue
+
+            
+        
+
 
 
 if __name__ == "__main__":
