@@ -17,7 +17,7 @@ Outbound Interface    FastEthernet0/0
 result = {}
 
 #префикс 'r' для корректного чтения пути в windows
-with open(r'C:\Users\IKrasnoborodko\Documents\_atwork\less\pyneng-examples-exercises-master\exercises\07_files\ospf.txt','r',encoding='utf-8') as f:
+with open('ospf.txt') as f:
     for line in f:
         print('\n')
         line_list = line.split()

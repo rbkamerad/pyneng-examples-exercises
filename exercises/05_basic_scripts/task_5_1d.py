@@ -46,9 +46,9 @@ london_co = {
 
 
 name = input('input hostname r1/r2/sw1: ') #выбираем первый ключ (устройство)
-name_keys = ', '.join(list(london_co[name].keys())) #получаем строку(список(ключи)
-param_reqest = ''.join(['input parameter (', name_keys, '): ']) #получаем строку со списком ключей в значении для ключа name
-param = input(param_reqest).lower() #получаем ключ в списке name_keys
+keys_name = ', '.join(list(london_co[name].keys())) #получаем строку(список(ключи)
+param_reqest = ''.join(['input parameter (', keys_name, '): ']) #получаем строку со списком ключей в значении для ключа name
+param = input(param_reqest).lower() #получаем ключ в списке keys_name
                                     #.lower() = поиск без учета регистра, т.к. ключи записаны строчными буквами
 hostname = london_co[name]
 

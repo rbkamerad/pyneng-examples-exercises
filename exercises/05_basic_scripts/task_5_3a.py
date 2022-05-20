@@ -27,17 +27,17 @@ trunk_template = [
 ]
 
 result_switchport = {
-    'access': access_template,
-    'trunk': trunk_template
-    }
+    'access': [access_template, 'Введите номер VLAN:'],
+    'trunk': [trunk_template, 'Введите разрешенные VLANы:']
+}
 
-switchport_mode = '\n'.join(result_switchport[input('Введите режим работы интерфейса (access/trunk): ')])
+switchport_mode = result_switchport[input('Введите режим работы интерфейса (access/trunk): ')]
 
 interface = input('Введите тип и номер интерфейса: ')
 result_interface = f'interface {interface}'
 
-vlan = input('Введите номер влан(ов): ')
-switchport_mode = switchport_mode.format(vlan)
+vlan = input(switchport_mode[1])
+switchport_mode = '\n'.join(switchport_mode[0]).format(vlan)
 
 result = '''
 {0}

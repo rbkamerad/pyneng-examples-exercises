@@ -41,10 +41,12 @@ net[3] = int(net[3])
 
 mask = int(input_net[1])
 mask_bit = '1' * mask + '0' * (32 - mask)
-mask_bit = ([int(mask_bit[0:8], 2),
-             int(mask_bit[8:16], 2),
-             int(mask_bit[16:24], 2),
-             int(mask_bit[24:], 2)])
+mask_bit = ([
+    int(mask_bit[0:8], 2),
+    int(mask_bit[8:16], 2),
+    int(mask_bit[16:24], 2),
+    int(mask_bit[24:], 2),
+])
 #{0:<10b}
 # 0  = номер аргумента в .format
 # <  = выравнивание по левому краю
@@ -61,12 +63,14 @@ Mask:
 {5:8b}  {6:08b}  {7:08b}  {8:08b}
 '''
 
-print(result.format(net[0], 
-                    net[1], 
-                    net[2], 
-                    net[3],
-                    mask,
-                    mask_bit[0], 
-                    mask_bit[1], 
-                    mask_bit[2], 
-                    mask_bit[3]))
+print(result.format(
+  net[0], 
+  net[1], 
+  net[2], 
+  net[3],
+  mask,
+  mask_bit[0], 
+  mask_bit[1], 
+  mask_bit[2], 
+  mask_bit[3],
+))

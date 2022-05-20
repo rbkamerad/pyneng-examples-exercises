@@ -52,8 +52,8 @@ london_co = {
 }
 
 name = input('input hostname r1/r2/sw1: ') #выбираем первый ключ (устройство)
-name_keys = ', '.join(list(london_co[name].keys())) #получаем строку(список(ключи) *
-param_reqest = ''.join(['input parameter (', name_keys, '): ']) #получаем строку со списком ключей в значении для ключа name
+keys_names = ', '.join(list(london_co[name].keys())) #получаем строку(список(ключи) *
+param_reqest = ''.join(['input parameter (', keys_names, '): ']) #получаем строку со списком ключей в значении для ключа name
 param = input(param_reqest) #получаем ключ в списке name_keys 
 
 print(london_co[name][param]) # **

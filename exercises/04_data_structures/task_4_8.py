@@ -29,10 +29,12 @@ ip = "192.168.3.1"
 
 ip = ip.split('.')
 #переводим элементы списка из str в int
-ip_int = ([int(ip[0]),
-           int(ip[1]),
-           int(ip[2]),
-           int(ip[3])])
+ip_int = ([
+    int(ip[0]),
+    int(ip[1]),
+    int(ip[2]),
+    int(ip[3]),
+    ])
 
 #{0:<10b}
 # 0  = номер аргумента в .format

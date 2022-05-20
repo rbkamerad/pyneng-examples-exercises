@@ -96,4 +96,4 @@ for intf, command_list in trunk.items():
         if command.endswith("allowed vlan"):
             print(f" {command} {command_list[0]} {','.join(command_list[1:])}")
         else:
-             print(f" {command}")
+            print(f" {command}")

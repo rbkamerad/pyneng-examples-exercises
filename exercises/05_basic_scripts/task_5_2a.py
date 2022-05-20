@@ -55,10 +55,12 @@ input_net = input('input subnet (ex:10.1.1.0/24): ').split('/')
 
 mask = int(input_net[1])
 mask_bit_str = '1' * mask + '0' * (32 - mask)
-mask_bit_list = ([int(mask_bit_str[0:8], 2),
-                  int(mask_bit_str[8:16], 2),
-                  int(mask_bit_str[16:24], 2),
-                  int(mask_bit_str[24:], 2)])
+mask_bit_list = ([
+    int(mask_bit_str[0:8], 2),
+    int(mask_bit_str[8:16], 2),
+    int(mask_bit_str[16:24], 2),
+    int(mask_bit_str[24:], 2),
+])
 result_mask = '''
 Mask:
 /{0:}
@@ -78,12 +80,15 @@ Network:
 {0:<10}{1:<10}{2:<10}{3:<10}
 {0:08b}  {1:08b}  {2:08b}  {3:08b}
 '''
-print(result_net.format(int(net_bit_str[0:8], 2),
-                        int(net_bit_str[8:16], 2),
-                        int(net_bit_str[16:24], 2),
-                        int(net_bit_str[24:], 2)) +
-      result_mask.format(mask,
-                         mask_bit_list[0], 
-                         mask_bit_list[1], 
-                         mask_bit_list[2], 
-                         mask_bit_list[3]))
+print(result_net.format(
+          int(net_bit_str[0:8], 2),
+          int(net_bit_str[8:16], 2),
+          int(net_bit_str[16:24], 2),
+          int(net_bit_str[24:], 2)) +
+      result_mask.format(
+          mask,
+          mask_bit_list[0], 
+          mask_bit_list[1], 
+          mask_bit_list[2], 
+          mask_bit_list[3]
+          ))

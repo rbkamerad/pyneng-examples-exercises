@@ -67,7 +67,8 @@ trunk_template = [
 result_switchport = {
     'access': access_template,
     'trunk': trunk_template
-    }
+}
+
 switchport_mode = '\n'.join(result_switchport[input('Введите режим работы интерфейса (access/trunk): ')])
 
 interface = input('Введите тип и номер интерфейса: ')
@@ -82,4 +83,4 @@ result = '''
 print(result.format(
     result_interface,
     switchport_mode
-    ))
+))

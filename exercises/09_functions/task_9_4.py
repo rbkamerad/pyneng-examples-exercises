@@ -82,11 +82,9 @@ def convert_config_to_dict(config_filename):
         for line in file_:
             if '!' in line or ignore_command(line, ignore):
                 continue
-            
-            elif line.startswith(' ') == False:
+            elif not line.startswith(' '):
                 key = line.strip()
                 result.append({key: []})
-            
             else:
                 result[-1][key] = (line.strip())
 
