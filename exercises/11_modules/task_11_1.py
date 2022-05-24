@@ -35,6 +35,7 @@ R6           Fa 0/2          143           R S I           2811       Fa 0/0
 """
 
 
+from unittest import result
 from urllib import request
 
 
@@ -47,24 +48,30 @@ def parse_cdp_neighbors(command_output):
     Плюс учимся работать с таким выводом.
     """
     result = {}
-    table_start = False
+    cdp_table_start = False
 
-    output_per_line_list =  command_output.split()
-    request_line = output_per_line_list[0]
-    local_device_name = request_line.split('>')[0]
-    for line in output_per_line_list:
-        words_list = line.split()
-        if not table_start:
+    list_output_per_line =  command_output.split('\n')
+    for string_line in list_output_per_line:
+        remote_device_name = ''
+        local_device_port = ''
+        remote_device_port = ''
+        if '>' in string_line:
+            local_device_name = string_line.split('>')[0]
+        if string_line.endswith('ID'):
+            cdp_table_start = True
             continue
-        
-        while words_list[-1] != 'ID':
-            continue
-
-            
-        
-
+        if cdp_table_start:
+            words_list_in_line = string_line.split()
+            if not words_list_in_line:
+                return result
+            remote_device_name += words_list_in_line[0]
+            remote_device_port += words_list_in_line[-2] + words_list_in_line[-1]
+            local_device_port += words_list_in_line[1] + words_list_in_line[2]
+            local_device = (local_device_name, local_device_port)
+            remote_device = (remote_device_name, remote_device_port)
+            result[local_device] = remote_device           
 
 
 if __name__ == "__main__":
-    with open("sh_cdp_n_sw1.txt") as f:
+    with open('C:\\Users\\Krasnoborodko\\Documents\\pyneng-examples-exercises\\exercises\\11_modules\\sh_cdp_n_sw1.txt') as f:
         print(parse_cdp_neighbors(f.read()))
